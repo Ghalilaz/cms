@@ -1,19 +1,14 @@
-
-require("dotenv").config();
-
 const express = require("express");
-const app = express();
+const env = require("dotenv");
+env.config();
+const PORT = process.env.PORT
 
-const PORT = process.env.PORT || 3000;
+const app = express()
 
 app.get("/", (req, res) => {
-    res.send("Hello from backend");
+    res.send("Hello from backend!");
 });
 
-if (require.main === module) {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}
-
-module.exports = app;
+app.listen(PORT, () =>{
+    console.log(`Server is running on port ${PORT}`);
+})
